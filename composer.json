@@ -1,0 +1,6 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "vanilla/garden-cli": "^3.1"
+    }
+}

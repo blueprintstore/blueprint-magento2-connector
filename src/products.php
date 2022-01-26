@@ -5,17 +5,12 @@ function syncProducts(
     $blueprint_options,
     $sync_options
 ){
-    $image_base_url = $magento_options['image_base_url'];
-    $fn = function($client, $data) use($image_base_url) {
-        return map_product($client, $data, $image_base_url);
-    };
-
     doSync(
         $magento_options,
         $blueprint_options,
         $sync_options,
         'products', 
-        $fn, 
+        'map_product', 
         MAGENTO_PAGE_SIZE
     );
 }
@@ -44,7 +39,9 @@ function map_variant($data, $image_base_url) {
     ];
 }
 
-function map_product($client, $data, $image_base_url) {
+function map_product($client, $data, $magento_options) {
+
+    $image_base_url = $magento_options['image_base_url'];
 
     if ($data->status!==1) return null;
     if ($data->visibility==1) return null;

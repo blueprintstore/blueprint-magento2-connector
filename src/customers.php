@@ -17,7 +17,9 @@ function syncCustomers(
 }
 
 
-function map_customer($client, $data) {
+function map_customer($client, $data, $magento_options) {
+
+    if (@$data->store_id !== $magento_options['filter_store_id']) return null;
 
     $customer = (object) [
         'externalId' => $data->id,

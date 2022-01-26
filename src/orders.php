@@ -51,7 +51,9 @@ function map_lineitem($o, $i){
     ];
 }
 
-function map_order($client, $data) {
+function map_order($client, $data, $magento_options) {
+
+    if (@$data->store_id !== $magento_options['filter_store_id']) return null;
 
     $status = map_status($data->state);
 

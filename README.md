@@ -40,10 +40,10 @@ php run-sync.php --magentoBaseUrl=http://your.store/ --magentoApiToken=xxxx --ma
 - Go to System -> integrations
 - Click 'add new integration' and enter name
 - Click API and add permissions for:
- - View customers
- - View orders
- - View products
- - Manage carts
+    - View customers
+    - View orders
+    - View products
+    - Manage carts
 - Click save and authorize and record the 'access token'
 
 ![API Permissions](./img/permissions.png)

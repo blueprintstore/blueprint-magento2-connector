@@ -10,7 +10,7 @@ function send_batch($blueprint_options, $batch, $is_historic) {
         'timeout'  => 60.0,
         'headers'  => [
             'Authorization' => $blueprint_options['api_access_token'],
-            'X-Blueprint-Batch' => $is_historic ? '1' : '0'
+            'x-blueprint-batch' => $is_historic ? '1' : '0'
         ],
         'http_errors' => false
     ]);

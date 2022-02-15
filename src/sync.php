@@ -8,6 +8,7 @@ function doSync(
     $mapper_fn,
     $page_size
 ) {
+    $is_historic = $sync_options['is_historic'];
     $client = get_client($magento_options);
     $total_records_in = 0;
     $total_records_out = 0;
@@ -27,7 +28,7 @@ function doSync(
                 $total_records_out++;
             }
         }
-        send_batch($blueprint_options, $batch);
+        send_batch($blueprint_options, $batch, $is_historic);
 
         if (count($items) < $page_size) {
             echo "done\n";

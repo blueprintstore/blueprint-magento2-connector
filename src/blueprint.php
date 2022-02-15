@@ -1,7 +1,7 @@
 <?php
 use GuzzleHttp\Client;
 
-function send_batch($blueprint_options, $batch) {
+function send_batch($blueprint_options, $batch, $is_historic) {
 
     if (count($batch)===0) return true;
 
@@ -9,12 +9,13 @@ function send_batch($blueprint_options, $batch) {
         'base_uri' => $blueprint_options['api_base_url'],
         'timeout'  => 60.0,
         'headers'  => [
-            'Authorization' => $blueprint_options['api_access_token']
+            'Authorization' => $blueprint_options['api_access_token'],
+            'X-Blueprint-Batch' => $is_historic ? '1' : '0'
         ],
         'http_errors' => false
     ]);
 
-    $response = $client->request('POST', 'batch', [
+    $response = $client->request('POST', 'bulk', [
         'json' => $batch
     ]);
 

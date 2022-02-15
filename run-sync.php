@@ -18,6 +18,7 @@ $cli->description('Sync Magento2 API to blueprint.')
     ->opt('magentoStoreId:u', 'Magento numeric store ID.', true, 'integer')
     ->opt('blueprintApiKey:k', 'Blueprint API key.', true)
     ->opt('blueprintApiUrl:d', 'Blueprint API endpoint.', false)
+    ->opt('isHistoric:h', 'Is historic?', false)
     ->opt('stateFile:s', 'State file name to use (Defaults to state.json)', false);
 
 // Parse and return cli args.
@@ -42,6 +43,7 @@ $import_to_datetime = date('c'); // now
 $sync_options = [
     'updated_from' => $import_from_datetime,
     'updated_to' => $import_to_datetime,
+    'is_historic' => $args->getOpt('isHistoric'),
 ];
 
 echo "Starting sync. Timestamps: $import_from_datetime -> $import_to_datetime\n";
